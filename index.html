@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Slot Machine ✨</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Slot Machine ✨</h1>
+
+    <div class="top-stats">
+      <div class="score">
+        Score: <span id="score">0</span>
+      </div>
+      <div class="credits">
+        Credits: <span id="credits">5</span>
+      </div>
+      <div class="luck">
+        Luck: <span id="luck">0</span>
+      </div>
+      <div class="difficulty">
+        Difficulty:
+        <select id="difficulty" aria-label="Game difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+          <option value="insane">Insane</option>
+        </select>
+      </div>
+      <div class="highscore">
+        High Score: <span id="highScore">0</span>
+      </div>
+      <div class="music-control">
+        <button id="musicToggle" class="music-btn" aria-pressed="false">Music: Off</button>
+      </div>
+      <div class="sound-control">
+        <button id="soundToggle" class="sound-btn" aria-pressed="true">SFX: On</button>
+      </div>
+      <div class="instructions-control">
+        <button id="instructionsBtn" class="info-btn" aria-haspopup="dialog">Instructions</button>
+      </div>
+    </div>
+
+    <section class="machine">
+      <div class="lights" aria-hidden="true">
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+      </div>
+
+      <div class="slots" aria-hidden="false">
+        <div class="reel" id="reel0"><div class="symbol">🍒</div></div>
+        <div class="reel" id="reel1"><div class="symbol">🍋</div></div>
+        <div class="reel" id="reel2"><div class="symbol">7️⃣</div></div>
+      </div>
+
+      <div class="controls">
+        <div class="message" id="message">Press the lever to play</div>
+        <div class="trade-area">
+          <button id="tradeBtn" class="trade-btn" title="Trade 15 score for 5 credits" disabled>Trade 15 score → 5 credits</button>
+          <button id="buyLuckBtn" class="luck-btn" title="Buy Luck (+1) for 50 score" disabled>Buy Luck (+1) — 50 score</button>
+        </div>
+      </div>
+
+      <div class="lever-area">
+        <button id="lever" aria-label="Pull lever" title="Pull lever">
+          <span class="lever-hinge" aria-hidden="true"></span>
+          <span class="lever-rod" aria-hidden="true"></span>
+          <span class="lever-knob" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      <small>Symbols: 🍒 🍋 🍊 🍉 ⭐ 7️⃣ — matches give score (15 points).</small>
+      <div class="feedback-area">
+        <button id="feedbackBtn" class="trade-btn">Leave Feedback</button>
+        <div id="feedbackList" class="feedback-list" aria-live="polite"></div>
+      </div>
+    </footer>
+  </main>
+
+  <div id="gameOver" class="game-over" role="dialog" aria-hidden="true">
+    <div class="game-over-panel">
+      <h2>Game Over</h2>
+      <p>You have no credits and no score left.</p>
+      <p class="prompt">Press <strong>R</strong> to restart the game.</p>
+    </div>
+  </div>
+
+  <div id="instructions" class="game-over" role="dialog" aria-hidden="true">
+    <div class="game-over-panel">
+      <h2>Welcome to the Slot Machine!</h2>
+      <p>You can press the lever to play the slot, and if you get a match you get score!</p>
+      <p>When you get score you can buy more credits to play again or you can buy luck! But be careful — if you run out of credits and score the game is over since you can't buy any credits :&lt;</p>
+      <p>You can adjust your difficulty at the start depending on your trust in your gambling skills!</p>
+      <p>Good luck friends and enjoy the slot! &lt;3</p>
+      <div style="margin-top:12px; text-align:center;">
+        <button id="closeInstructions" class="trade-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="feedbackModal" class="game-over" role="dialog" aria-hidden="true">
+    <div class="game-over-panel">
+      <h2>Feedback</h2>
+      <p>Tell us what you think about the game — suggestions, bugs, or general vibes.</p>
+      <textarea id="feedbackText" rows="6" style="width:100%;box-sizing:border-box;margin-top:8px;" placeholder="Type your feedback here..."></textarea>
+      <div style="margin-top:12px; text-align:center;">
+        <button id="submitFeedback" class="trade-btn">Submit</button>
+        <button id="closeFeedback" class="trade-btn" style="margin-left:8px;">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
